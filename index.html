@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            box-sizing: border-box;
+        }
+
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10vh;
+            background-color: rgb(255, 255, 168);
+        }
+
+        input{
+            display: none;
+        }
+
+        label{
+            display: none;
+            background-image:url(/slike/hamburger.png);
+            background-size: 50px;
+            width: 50px;
+            height: 50px;
+            margin-right: 2%;
+        }
+
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav{
+            width: 100%;
+            height: 10vh;
+            padding: 0.5%;
+        }
+
+        nav ul{
+            list-style: none;
+            display: block;
+            position: relative;
+        }
+
+        nav li{
+            display: inline-block;
+            margin: 10px;
+            color: black;
+            padding: 10px;
+            width: 120px;
+            text-align: center;
+            height: 50%;
+            font-size: 25px;
+        }
+
+        .naslov{
+            float: right;
+            font-size: 25px;
+            bottom: 55px;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        main{
+            height: 90vh;
+            margin: 20px 20px;
+        }
+
+        nav li:hover{
+            background-color: blue;
+            color: white;
+            border-radius: 20px;
+        }    
+
+        .opcenito img{
+            float: right;
+            margin-left: 20px;
+            height: 100%;
+        }
+
+
+        .pozicije{
+            margin-top: 20px;
+            width: 100%;
+            height: 50%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 
+                "h1 h1 h1"
+                "box1 box2 box3"
+                "box4 box5 box6"
+            ;
+        }
+
+        .pozicije>div{
+            position: relative;
+        }
+
+        .pozicije img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            padding: 1%;
+        }
+
+        h1{
+            grid-area: h1;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+        }
+
+        .wrapper1{
+            object-fit: content;
+            grid-area: box1;
+        }
+
+        .wrapper2{
+            object-fit: content;
+            grid-area: box2;
+        }
+
+        .wrapper3{
+            object-fit: content;
+            grid-area: box3;
+        }
+
+        .wrapper4{
+            object-fit: content;
+            grid-area: box4;
+        }
+
+        .wrapper5{
+            object-fit: content;
+            grid-area: box5;
+        }
+
+        .wrapper6{
+            object-fit: content;
+            grid-area: box6;
+        }
+
+        .box{
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .pozicije div:hover .box{
+            display: block;
+            position: absolute;
+            background-color: rgba(244, 244, 244, 0.5);
+            top: 40px;
+            left: 0;
+        }
+
+        
+
+
+        @media (max-width:800px) {
+            header{
+                justify-content: right;
+            }
+
+            nav{
+                display: none;
+            }
+
+            label{
+                display: block;
+            }
+
+            input:checked~label{
+                background-image: url(/slike/close.png);
+            }
+
+            input:checked~nav{
+                display: block;
+                padding: 0px;
+            }
+
+
+            nav ul{
+                width: 100%;
+                position: absolute;
+                top: 10vh;
+                background-color: white;
+                
+            }
+
+            nav ul li{
+                width: 100%;
+                margin: 0px;
+                border-bottom: 1px solid black;
+                border-radius: 0;
+            }
+
+            nav li:hover{
+                border-radius: 0;
+            }
+
+            .opcenito img{
+                width: 100%;
+            }
+
+            .pozicije{
+                grid-template-columns: repeat (7,1fr);
+                grid-template-rows: 1fr;
+                grid-template-areas:
+                    "naslov"
+                    "box1"
+                    "box2"
+                    "box3"
+                    "box4"
+                    "box5"
+                    "box6"
+                ;
+            }
+
+           
+
+            h1{
+                grid-area: naslov;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+            }
+    
+            .wrapper1{
+                object-fit: content;
+                grid-area: box1;
+            }
+    
+            .wrapper2{
+                object-fit: content;
+                grid-area: box2;
+            }
+    
+            .wrapper3{
+                object-fit: content;
+                grid-area: box3;
+            }
+    
+            .wrapper4{
+                object-fit: content;
+                grid-area: box4;
+            }
+    
+            .wrapper5{
+                object-fit: content;
+                grid-area: box5;
+            }
+    
+            .wrapper6{
+                object-fit: content;
+                grid-area: box6;
+            }
+
+            .pozicije div:hover .box{
+                display: block;
+                position: absolute;
+                background-color: rgba(244, 244, 244, 0.5);
+                top: 60px;
+                left: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <input type="checkbox" id="menu">
+            <nav>
+                <div class="odabir">
+                    <ul>
+                    <li><a href="#opcenito">Općenito</a></li>
+                    <li><a href="#pozicije">Pozicije</a></li>
+                </ul>
+                </div>
+                <div class="naslov">
+                    <h1>Odbojka</h1>
+                </div>
+            </nav>
+            <label for="menu"></label>
+        </header>
+        <main>
+
+            <div class="opcenito">
+                <a id="opcenito"><h1>Općenito</h1></a>
+                <img src="/slike/odbojka1.jpg" alt="">
+                <p>Odbojka je timska (grupna) igra u kojoj se dvije ekipe od po šest igrača bore na terenu dimenzija 18x9 metara. Po sredini igrališta razapeta je mreža široka 1 metar i duga 9,5 metara. Razmak između gornjeg ruba mreže i tla je različit: 243 cm za seniore i 224 cm za seniorke.</p>
+                <p>Igralište je središnjom linijom podijeljeno na dva polja; na 3 metra od nje teku sa strane paralelne linije koje označavaju zonu napada, a iza njih zonu obrane. Prostor za serviranje je iza zadnje linije i može se slobodno servirati s bilo kojeg mjesta duž linije.</p>
+                <p>Početni udarac (servis) izvodi desni igrač stražnje linije, nastojeći da prebaci loptu u protivničko polje. Ako je servis izveden nepravilno ili ako je protivnik u toku nadigravanja bio uspješniji, protivnik stječe pravo serviranja.</p>
+                <p>Ekipa smije loptu dodirnuti tri puta u jednom poenu, a isti igrač ne smije odigrati loptu dvaput uzastopce (blok se ne broji kao dodir, tako da kad igrač odigra blok, može igrati još jednom).</p>
+                <p>Lopta ostaje u igri dok ne dodirne teren, zid ili neki predmet, odnosno dok netko od igrača ne učini pogrešku.</p>
+            </div>
+
+
+            <div class="pozicije">
+                <a id="pozicije"><h1>Pozicije</h1></a>
+        
+                <div class="wrapper1">
+                    <img src="/slike/tehnicar.jpg" alt="">
+                    <div class="box">
+                        <h2>Tehničar</h2>
+                        <p>Organizira igru svog tima, dodaje loptu napadačima i osigurava da se napdi odvijaju glatko.</p>
+                    </div>
+                </div>
+        
+                <div class="wrapper2">
+                    <img src="/slike/korektor.jpg" alt="">
+                    <div class="box">
+                        <h2>Korektor</h2>
+                        <p>Najjaći napadači u terenu.</p>
+                    </div>
+                </div>
+        
+                <div class="wrapper3">
+                    <img src="/slike/primac.jpg" alt="">
+                    <div class="box">
+                        <h2>Primač-napadač</h2>
+                        <p>Specijaliziran za primanje srvisa, obranu kao i za napad.</p>
+                    </div>
+                </div>
+        
+                <div class="wrapper4">
+                    <img src="/slike/srednjak.jpg" alt="">
+                    <div class="box">
+                        <h2>Srednji bloker</h2>
+                        <p>Blokira protivnički napad.</p>
+                    </div>
+                </div>
+        
+                <div class="wrapper5">
+                    <img src="/slike/libero.jpg" alt="">
+                    <div class="box">
+                        <h2>Libero</h2>
+                        <p>Specijalist za obarnu i prijem, igra samo u stražnjem djelu terena.</p>
+                    </div>
+                </div>
+        
+                <div class="wrapper6">
+                    <img src="/slike/trener.jpg" alt="">
+                    <div class="box">
+                        <h2>Trener</h2>
+                        <p>Postavlja igrače u teren i govori im tko šta treba raditi.</p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </main>
+    </div>
+</body>
+</html>
